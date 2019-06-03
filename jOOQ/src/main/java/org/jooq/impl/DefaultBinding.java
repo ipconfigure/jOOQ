@@ -2216,12 +2216,12 @@ public class DefaultBinding<T, U> implements Binding<T, U> {
     private static final long parse(Class<? extends java.util.Date> type, String date) throws SQLException {
 
         // Try reading a plain number first
-        try {
-            return Long.valueOf(date);
-        }
+        //try {
+        //    return Long.valueOf(date);
+        //}
 
         // If that fails, try reading a formatted date
-        catch (NumberFormatException e) {
+        //catch (NumberFormatException e) {
 
             if (type == Timestamp.class)
                 return Timestamp.valueOf(date).getTime();
@@ -2233,8 +2233,9 @@ public class DefaultBinding<T, U> implements Binding<T, U> {
             if (type == Time.class)
                 return Time.valueOf(date).getTime();
 
-            throw new SQLException("Could not parse date " + date, e);
-        }
+            //throw new SQLException("Could not parse date " + date, e);
+            throw new SQLException("Could not parse date " + date);
+        //}
     }
 
     // -------------------------------------------------------------------------
