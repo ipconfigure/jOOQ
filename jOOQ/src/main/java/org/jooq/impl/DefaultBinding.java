@@ -421,12 +421,12 @@ public class DefaultBinding<T, U> implements Binding<T, U> {
     private static final long parse(Class<? extends java.util.Date> type, String date) throws SQLException {
 
         // Try reading a plain number first
-        try {
-            return Long.valueOf(date);
-        }
+        //try {
+        //    return Long.valueOf(date);
+        //}
 
         // If that fails, try reading a formatted date
-        catch (NumberFormatException e) {
+        //catch (NumberFormatException e) {
 
             // [#7325] In SQLite dates could be stored in both ISO standard formats:
             //         With T (default standard), or without T (optional standard, JDBC standard)
@@ -442,8 +442,9 @@ public class DefaultBinding<T, U> implements Binding<T, U> {
             else if (type == Time.class)
                 return Time.valueOf(date).getTime();
 
-            throw new SQLException("Could not parse date " + date, e);
-        }
+            throw new SQLException("Could not parse date " + date);
+            //throw new SQLException("Could not parse date " + date, e);
+        //}
     }
 
     // -----------------------------------------------------------------------------------------------------------------
